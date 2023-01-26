@@ -7,6 +7,7 @@ const GameProvider = ({ children }) => {
   // game state
   const [boxFlag, setBoxFlag] = useState(false);
   const [selectedBox, setSelectedBox] = useState();
+  const [currentPlayer, setCurrentPlayer] = useState('X');
   
 
   // functions
@@ -14,7 +15,8 @@ const GameProvider = ({ children }) => {
 
   return <GameContext.Provider value={{ 
     boxFlag, setBoxFlag,
-    selectedBox, setSelectedBox
+    selectedBox, setSelectedBox,
+    currentPlayer, setCurrentPlayer
   }}>{children}</GameContext.Provider>;
 };
 

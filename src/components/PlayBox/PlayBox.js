@@ -3,10 +3,16 @@ import { GameContext } from '../../Context/GameContext.js';
 import './PlayBox.css';
 
 export default function PlayBox({ box }) {
-  const { setSelectedBox } = useContext(GameContext);
+  const { setSelectedBox, currentPlayer, setCurrentPlayer } = useContext(GameContext);
 
   function handleBoxClick() {
     setSelectedBox(box);
+
+    if (currentPlayer === 'X') {
+      setCurrentPlayer('O');
+    } else {
+      setCurrentPlayer('X');
+    }
   }
 
 

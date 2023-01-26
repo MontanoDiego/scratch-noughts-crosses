@@ -5,14 +5,14 @@ import './Main.css';
 
 export default function Main() {
 
-  const { selectedBox } = useContext(GameContext);
+  const { selectedBox, currentPlayer } = useContext(GameContext);
 
   // hardcode for styling purposes
   return (
     <div>
       <section>
         <h1>You selected {selectedBox}</h1>
-        <h3>x it is your turn!</h3>
+        <h3>{currentPlayer} it is your turn!</h3>
         <h2>Cats Game!</h2>
       </section>
       <section className='box-container'>
