@@ -5,12 +5,19 @@ import './PlayBox.css';
 export default function PlayBox({ box }) {
   const { 
     currentPlayer, setCurrentPlayer,
-    setSelectedBox, selectedBox,
-    boxValues, setBoxValues } = useContext(GameContext);
+    setSelectedBox,
+    boxValues, setBoxValues,
+    boxFlag, setBoxFlag } = useContext(GameContext);
 
   function handleBoxClick() {
     setSelectedBox(box);
-    setBoxValues({ ...boxValues, [box]: currentPlayer });
+    setBoxFlag({ ...boxFlag, [box]: true });
+
+    if (!boxFlag[box]) {
+      setBoxValues({ ...boxValues, [box]: currentPlayer });
+    }
+
+
     if (currentPlayer === 'X') {
       setCurrentPlayer('O');
     } else {
