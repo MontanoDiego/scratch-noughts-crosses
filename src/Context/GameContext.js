@@ -5,14 +5,16 @@ const GameContext = createContext();
 
 const GameProvider = ({ children }) => {
   // game state
-  // const [value, setValue] = useState([]);
+  const [boxFlag, setBoxFlag] = useState(false);
+  const [selectedBox, setSelectedBox] = useState();
   
 
   // functions
 
 
   return <GameContext.Provider value={{ 
-    // props
+    boxFlag, setBoxFlag,
+    selectedBox, setSelectedBox
   }}>{children}</GameContext.Provider>;
 };
 

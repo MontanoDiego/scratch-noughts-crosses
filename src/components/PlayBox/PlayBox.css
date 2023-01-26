@@ -4,4 +4,6 @@
   width: 200px;
   margin: 30px;
   border: solid black 3px;
+  display: flex;
+  align-items: center;
 }

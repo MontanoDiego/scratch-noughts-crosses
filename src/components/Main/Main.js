@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GameContext } from '../../Context/GameContext.js';
 import PlayBox from '../PlayBox/PlayBox.js';
 import './Main.css';
 
 export default function Main() {
 
+  const { selectedBox } = useContext(GameContext);
 
   // hardcode for styling purposes
   return (
     <div>
       <section>
+        <h1>You selected {selectedBox}</h1>
         <h3>x it is your turn!</h3>
         <h2>Cats Game!</h2>
       </section>
