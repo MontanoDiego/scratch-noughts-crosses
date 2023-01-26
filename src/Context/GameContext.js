@@ -5,7 +5,7 @@ const GameContext = createContext();
 
 const GameProvider = ({ children }) => {
   // game state
-  const [value, setValue] = useState([]);
+  // const [value, setValue] = useState([]);
   
 
   // functions

@@ -1,0 +1,7 @@
+.play-box {
+  background-color: rgb(171, 255, 255);
+  height: 200px;
+  width: 200px;
+  margin: 30px;
+  border: solid black 3px;
+}
