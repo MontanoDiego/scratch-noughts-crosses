@@ -13,7 +13,7 @@ export default function Main() {
       <section>
         <h1>You selected {selectedBox}</h1>
         <h3>{currentPlayer} it is your turn!</h3>
-        <h2>Cats Game!</h2>
+        {/* <h2>Cats Game!</h2> */}
       </section>
       <section className='box-container'>
         <PlayBox 
