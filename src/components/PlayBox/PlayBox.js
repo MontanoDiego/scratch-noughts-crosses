@@ -18,9 +18,9 @@ export default function PlayBox({ box }) {
     }
 
 
-    if (currentPlayer === 'X') {
+    if (currentPlayer === 'X' && boxFlag[box] === false) {
       setCurrentPlayer('O');
-    } else {
+    } else if (boxFlag[box] === false) {
       setCurrentPlayer('X');
     }
   }
