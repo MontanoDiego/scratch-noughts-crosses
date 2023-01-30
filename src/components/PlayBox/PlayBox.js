@@ -8,9 +8,8 @@ export default function PlayBox({ box }) {
     boxValues, setBoxValues,
     boxFlag, setBoxFlag, 
     setActiveGame, activeGame,
-    isWinningState, checkWinner } = useContext(GameContext);
+    isWinningState, checkWinner, setWinText } = useContext(GameContext);
   
-
   checkWinner();
 
   function handleBoxClick() {
@@ -32,6 +31,7 @@ export default function PlayBox({ box }) {
       const allBoxesChecked = Object.values(boxFlag).every(flag => flag === true);
       if (allBoxesChecked) {
         setActiveGame(false);
+        setWinText('Cat\'s Game!!');
       }
     }
   }

@@ -5,10 +5,12 @@ const GameContext = createContext();
 
 const GameProvider = ({ children }) => {
   // game state
+  const [winSymbol, setWinSymbol] = useState('');
   const [winText, setWinText] = useState('');
   const [activeGame, setActiveGame] = useState(true);
   const [selectedBox, setSelectedBox] = useState();
   const [currentPlayer, setCurrentPlayer] = useState('X');
+  const [subWinText, setSubWinText] = useState(`${currentPlayer}, it is your turn!`);
   const [boxValues, setBoxValues] = useState({
     1: '',
     2: '',
@@ -48,10 +50,10 @@ const GameProvider = ({ children }) => {
     for (const winState of winStates) {
       const [a, b, c] = winState;
       if (boxValues[a] === boxValues[b] && boxValues[b] === boxValues[c] && boxValues[a] !== '') {
+        setWinSymbol(boxValues[a]);
         return true;
       }
     }
-    
     return false;
   };
 
@@ -61,7 +63,8 @@ const GameProvider = ({ children }) => {
 
     if (winCon === true) {
       setActiveGame('false');
-      setWinText('- Wins!');
+      setWinText(`${winSymbol} Wins!!`);
+      setSubWinText('');
     }
   }
 
@@ -74,7 +77,8 @@ const GameProvider = ({ children }) => {
     boxValues, setBoxValues,
     activeGame, setActiveGame,
     isWinningState, checkWinner,
-    winText, setWinText
+    winText, setWinText,
+    subWinText, setSubWinText
   }}>{children}</GameContext.Provider>;
 };
 

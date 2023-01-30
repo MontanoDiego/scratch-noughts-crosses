@@ -5,15 +5,15 @@ import './Main.css';
 
 export default function Main() {
 
-  const { selectedBox, currentPlayer, winText } = useContext(GameContext);
+  const { selectedBox, currentPlayer, winText, subWinText, setSubWinText } = useContext(GameContext);
 
+  // setSubWinText(`${currentPlayer}, it is your turn!`);
   // hardcode for styling purposes
   return (
     <div>
       <section>
         <h1>{winText}</h1>
-        <h3>{currentPlayer} it is your turn!</h3>
-        {/* <h2>Cats Game!</h2> */}
+        <h3>{subWinText}</h3>
       </section>
       <section className='box-container'>
         <PlayBox 
