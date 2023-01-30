@@ -5,7 +5,7 @@ import './Main.css';
 
 export default function Main() {
 
-  const { selectedBox, currentPlayer, winText, subWinText, setSubWinText, reset } = useContext(GameContext);
+  const { currentPlayer, winText, reset } = useContext(GameContext);
 
   // setSubWinText(`${currentPlayer}, it is your turn!`);
   // hardcode for styling purposes
