@@ -11,6 +11,11 @@ export default function PlayBox({ box }) {
     isWinningState, checkWinner, setWinText } = useContext(GameContext);
   
   checkWinner();
+  const allBoxesChecked = Object.values(boxFlag).every(flag => flag === true);
+  if (allBoxesChecked) {
+    setWinText('Cat\'s Game!!');
+    setActiveGame(false);
+  }
 
   function handleBoxClick() {
     const currentBoxState = boxFlag[box];
@@ -28,11 +33,11 @@ export default function PlayBox({ box }) {
         }
       }
 
-      const allBoxesChecked = Object.values(boxFlag).every(flag => flag === true);
-      if (allBoxesChecked) {
-        setActiveGame(false);
-        setWinText('Cat\'s Game!!');
-      }
+      // const allBoxesChecked = Object.values(boxFlag).every(flag => flag === true);
+      // if (allBoxesChecked) {
+      //   setWinText('Cat\'s Game!!');
+      //   setActiveGame(false);
+      // }
     }
   }
   

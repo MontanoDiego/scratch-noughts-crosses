@@ -14,6 +14,7 @@ export default function Main() {
       <section>
         <h1>{winText}</h1>
         <h3>{subWinText}</h3>
+        <button>Reset!</button>
       </section>
       <section className='box-container'>
         <PlayBox 

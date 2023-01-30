@@ -35,6 +35,9 @@ const GameProvider = ({ children }) => {
   });
   
 
+  // new
+
+
   // win con
   const isWinningState = (boxValues) => {
     const winStates = [
@@ -68,6 +71,7 @@ const GameProvider = ({ children }) => {
     }
   }
 
+  
 
 
   return <GameContext.Provider value={{ 
