@@ -5,16 +5,17 @@ import './Main.css';
 
 export default function Main() {
 
-  const { selectedBox, currentPlayer, winText, subWinText, setSubWinText } = useContext(GameContext);
+  const { selectedBox, currentPlayer, winText, subWinText, setSubWinText, reset } = useContext(GameContext);
 
   // setSubWinText(`${currentPlayer}, it is your turn!`);
   // hardcode for styling purposes
+  
   return (
     <div>
       <section>
         <h1>{winText}</h1>
-        <h3>{subWinText}</h3>
-        <button>Reset!</button>
+        <h3>{currentPlayer}, it is your turn!</h3>
+        <button onClick={reset}>Reset!</button>
       </section>
       <section className='box-container'>
         <PlayBox 
