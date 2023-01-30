@@ -5,6 +5,7 @@ const GameContext = createContext();
 
 const GameProvider = ({ children }) => {
   // game state
+  const [winText, setWinText] = useState('');
   const [activeGame, setActiveGame] = useState(true);
   const [selectedBox, setSelectedBox] = useState();
   const [currentPlayer, setCurrentPlayer] = useState('X');
@@ -32,7 +33,37 @@ const GameProvider = ({ children }) => {
   });
   
 
-  // functions
+  // win con
+  const isWinningState = (boxValues) => {
+    const winStates = [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+      [1, 4, 7],
+      [2, 5, 8],
+      [3, 6, 9],
+      [1, 5, 9],
+      [3, 5, 7]
+    ];
+    for (const winState of winStates) {
+      const [a, b, c] = winState;
+      if (boxValues[a] === boxValues[b] && boxValues[b] === boxValues[c] && boxValues[a] !== '') {
+        return true;
+      }
+    }
+    
+    return false;
+  };
+
+  // win state
+  function checkWinner() {
+    const winCon = isWinningState(boxValues);
+
+    if (winCon === true) {
+      setActiveGame('false');
+      setWinText('- Wins!');
+    }
+  }
 
 
 
@@ -41,7 +72,9 @@ const GameProvider = ({ children }) => {
     selectedBox, setSelectedBox,
     currentPlayer, setCurrentPlayer,
     boxValues, setBoxValues,
-    activeGame, setActiveGame
+    activeGame, setActiveGame,
+    isWinningState, checkWinner,
+    winText, setWinText
   }}>{children}</GameContext.Provider>;
 };
 

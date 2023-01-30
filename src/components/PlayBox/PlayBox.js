@@ -5,30 +5,42 @@ import './PlayBox.css';
 export default function PlayBox({ box }) {
   const { 
     currentPlayer, setCurrentPlayer,
-    setSelectedBox,
     boxValues, setBoxValues,
-    boxFlag, setBoxFlag } = useContext(GameContext);
+    boxFlag, setBoxFlag, 
+    setActiveGame, activeGame,
+    isWinningState, checkWinner } = useContext(GameContext);
+  
+
+  checkWinner();
 
   function handleBoxClick() {
-    setSelectedBox(box);
-    setBoxFlag({ ...boxFlag, [box]: true });
+    const currentBoxState = boxFlag[box];
+    isWinningState(boxValues);
 
-    if (!boxFlag[box]) {
-      setBoxValues({ ...boxValues, [box]: currentPlayer });
-    }
+    if (activeGame === true) {
+      if (!currentBoxState) {
+        setBoxValues({ ...boxValues, [box]: currentPlayer });
+        setBoxFlag({ ...boxFlag, [box]: true });
 
+        if (currentPlayer === 'X') {
+          setCurrentPlayer('O');
+        } else {
+          setCurrentPlayer('X');
+        }
+      }
 
-    if (currentPlayer === 'X' && boxFlag[box] === false) {
-      setCurrentPlayer('O');
-    } else if (boxFlag[box] === false) {
-      setCurrentPlayer('X');
+      const allBoxesChecked = Object.values(boxFlag).every(flag => flag === true);
+      if (allBoxesChecked) {
+        setActiveGame(false);
+      }
     }
   }
-    
+  
+  
+  
   
   return (
     <div className='play-box' onClick={handleBoxClick}>
-      <h1>PlayBox Number {box}</h1>
       <h2>{boxValues[box]}</h2>
     </div>
   );
