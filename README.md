@@ -4,7 +4,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Use this template for all your "from scratch" deliverables. To start, simply run
 
-- `npm install`
 - `npm start`
 
 ## Available Scripts
